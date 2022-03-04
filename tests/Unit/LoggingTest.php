@@ -22,7 +22,9 @@ class LoggingTest extends TestCase
 
         $this->assertFileExists($fooLogFile);
         $this->assertStringContainsString('Foo!', file_get_contents($fooLogFile));
+        $this->assertStringNotContainsString('Bar!', file_get_contents($fooLogFile));
         $this->assertFileExists($barLogFile);
+        $this->assertStringNotContainsString('Foo!', file_get_contents($fooLogFile));
         $this->assertStringContainsString('Bar!', file_get_contents($barLogFile));
     }
 }
